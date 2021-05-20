@@ -1,0 +1,102 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+
+
+.container {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    alignment: bottom;
+}
+
+#color-picker {
+    border: 3px solid rgba(15, 15, 15, 0.2);
+}
+
+.info {
+    width: 12em;
+    display: flex;
+    margin-left: 4em;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.selected {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 3px solid rgba(15, 15, 15, 0.2);
+
+}
+
+button {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button {
+    background: ghostwhite;
+    color: black;
+    width: 240px;
+    height: 80px;
+    border: 1px solid #338033;
+    font-size: 18px;
+    border-radius: 4px;
+    transition: .6s;
+    overflow: hidden;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5;
+    filter: blur(30px);
+    transform: translate(-130px) skewX(-15deg);
+}
+button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .5);
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top: 0;
+    opacity: 0;
+    filter: blur(30px);
+    transform: translate(-130px) skewX(-15deg);
+}
+
+button:hover {
+    background: #338033;
+    cursor: pointer;
+}
+
+button:hover:before {
+    transform: translateX(300px) skewX(-15deg);
+    opacity: .6;
+    transition: .7s;
+}
+button:hover:after {
+    transform: translateX(300px) skewX(-15deg);
+    opacity: 1;
+    transition: .7s;
+}
+
