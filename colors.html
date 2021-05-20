@@ -24,6 +24,9 @@
         </div>
 </div>
 </p>
+
+//class picker aangemaakt
+
         <script>
     class Picker {
         constructor(target, width, height) {
@@ -34,16 +37,16 @@
             this.target.height = height;
             //get context
             this.context = this.target.getContext("2d");
-            //circle
+            //circle, maakt circle aan
             this.pickerCircle = { x: 10, y: 10, width: 7, height: 7 };
 
             this.listenForEvents();
         }
-
+// draws de gradient box
         draw() {
             this.build();
         }
-
+//maakt gradient box
         build() {
             let gradient = this.context.createLinearGradient(0, 0, this.width, 0);
             gradient.addColorStop(0, "rgba(255,0,0)");
@@ -54,7 +57,7 @@
             gradient.addColorStop(0.84, "rgba(255,255,0)");
             gradient.addColorStop(1, "rgba(255,0,0)");
 
-            //fill
+            //fill, gradient filler
             this.context.fillStyle = gradient;
             this.context.fillRect(0, 0, this.width, this.height);
 
@@ -80,7 +83,7 @@
             this.context.stroke();
             this.context.closePath();
         }
-
+//kijkt of events uitgevoert worden
         listenForEvents() {
             let isMouseDown = false;
             const onMouseDown = (e) => {
@@ -107,21 +110,20 @@
             }
 
 
-
+// als mouse up true is, is mouse down false
             const onMouseUp = () => {
                 isMouseDown = false;
 
             }
 
-            //register events
-            this.target.addEventListener('mousedown', onMouseDown);
+//register events, kijks of mouse beweegt of is gedrukt
             this.target.addEventListener("mousemove", onMouseMove);
             this.target.addEventListener("mousemove", () =>
                 this.onChangeCallback(this.getPickedColor()));
 
             document.addEventListener("mouseup", onMouseUp);
         }
-
+    //get color from color picker
         getPickedColor(){
             let imageData = this.context.getImageData(
                 this.pickerCircle.x, this.pickerCircle.y, 1, 1);
